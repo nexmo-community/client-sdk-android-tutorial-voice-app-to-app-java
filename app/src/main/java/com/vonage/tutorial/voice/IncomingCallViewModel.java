@@ -16,8 +16,8 @@ public class IncomingCallViewModel extends ViewModel {
     private NavManager navManager = NavManager.getInstance();
     private CallManager callManager = CallManager.getInstance();
 
-    private MutableLiveData<String> toastMutableLiveData = new MutableLiveData<>();
-    public LiveData<String> toastLiveData = toastMutableLiveData;
+    private MutableLiveData<String> _toast = new MutableLiveData<>();
+    public LiveData<String> toast = _toast;
 
     public void hangup() {
         hangupInternal(true);
@@ -36,7 +36,7 @@ public class IncomingCallViewModel extends ViewModel {
 
             @Override
             public void onError(@NonNull NexmoApiError apiError) {
-                toastMutableLiveData.postValue(apiError.getMessage());
+                _toast.postValue(apiError.getMessage());
             }
         });
     }
@@ -58,7 +58,7 @@ public class IncomingCallViewModel extends ViewModel {
 
             @Override
             public void onError(@NonNull NexmoApiError nexmoApiError) {
-                toastMutableLiveData.postValue(nexmoApiError.getMessage());
+                _toast.postValue(nexmoApiError.getMessage());
             }
         });
     }

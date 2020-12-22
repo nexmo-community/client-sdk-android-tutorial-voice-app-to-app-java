@@ -3,7 +3,6 @@ package com.vonage.tutorial.voice;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +30,7 @@ public class IncomingCallFragment extends Fragment implements BackPressHandler {
         hangupButton = view.findViewById(R.id.hangupButton);
         answerButton = view.findViewById(R.id.answerButton);
 
-        viewModel.toastLiveData.observe(getViewLifecycleOwner(), it -> Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT));
+        viewModel.toast.observe(getViewLifecycleOwner(), it -> Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT));
 
         hangupButton.setOnClickListener(it -> viewModel.hangup());
 
